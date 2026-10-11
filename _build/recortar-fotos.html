@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recortar fotos del equipo</title>
+<style>
+  :root{--navy:#123B63;--ink:#1D2733;--slate:#5B6772;--line:#DCE3EA;--green:#3E7D5A}
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.5 -apple-system,system-ui,"Segoe UI",sans-serif;color:var(--ink);background:#F6F8FA}
+  main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+  h1{font:600 24px/1.2 Georgia,serif;color:var(--navy);margin:0 0 4px}
+  p.sub{color:var(--slate);margin:0 0 20px}
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:16px}
+  label{font-weight:600}
+  select,input[type=text]{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:#fff;min-width:260px}
+  .drop{border:2px dashed var(--line);border-radius:10px;background:#fff;padding:28px;text-align:center;color:var(--slate);cursor:pointer}
+  .drop.over{border-color:var(--navy);color:var(--navy)}
+  .work{display:none;gap:28px;flex-wrap:wrap;align-items:flex-start}
+  .stage{position:relative;width:400px;max-width:100%;aspect-ratio:1;border-radius:8px;overflow:hidden;background:#222;touch-action:none;cursor:grab}
+  .stage:active{cursor:grabbing}
+  .work>div:first-child{flex:0 1 400px;min-width:0}
+  .stage canvas{width:100%;height:auto;aspect-ratio:1;display:block}
+  .stage::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 400px rgba(255,255,255,.55);pointer-events:none}
+  .side{flex:1;min-width:220px}
+  .side .prev{width:160px;height:160px;border-radius:50%;overflow:hidden;border:1px solid var(--line);margin-bottom:6px}
+  .side .prev canvas{width:100%;height:100%}
+  .side .mini{width:64px;height:64px;border-radius:50%;overflow:hidden;border:1px solid var(--line);display:inline-block;vertical-align:middle;margin-right:8px}
+  .side .mini canvas{width:100%;height:100%}
+  input[type=range]{width:100%;max-width:400px}
+  button{font:600 15px/1 inherit;padding:11px 16px;border:0;border-radius:6px;background:var(--green);color:#fff;cursor:pointer}
+  button.sec{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .name{font:500 13px/1.4 ui-monospace,Menlo,monospace;color:var(--slate);word-break:break-all}
+  ol{padding-left:20px;color:var(--slate)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Recortar fotos del equipo</h1>
+  <p class="sub">Elige la persona, carga su foto, encuadra la cara dentro del círculo y descarga. El archivo sale ya con el nombre y tamaño que la web necesita.</p>
+
+  <div class="row">
+    <label for="who">Miembro</label>
+    <select id="who"></select>
+  </div>
+
+  <div class="drop" id="drop">Arrastra aquí la foto o <u>pulsa para elegirla</u>
+    <input type="file" id="file" accept="image/*" hidden>
+  </div>
+
+  <div class="work" id="work">
+    <div>
+      <div class="stage" id="stage"><canvas id="cv" width="800" height="800"></canvas></div>
+      <p style="margin:10px 0 4px"><label for="zoom">Zoom</label></p>
+      <input type="range" id="zoom" min="1" max="6" step="0.01" value="1">
+      <p class="sub" style="margin-top:6px">Arrastra la foto para moverla. Rueda del ratón o el control de arriba para acercar.</p>
+    </div>
+    <div class="side">
+      <p style="margin:0 0 8px"><b>Así se verá</b></p>
+      <div class="prev"><canvas id="pv" width="320" height="320"></canvas></div>
+      <p class="sub" style="margin:0 0 10px">Ficha del miembro</p>
+      <div class="mini"><canvas id="mv" width="128" height="128"></canvas></div><span class="sub">Lista del equipo</span>
+      <p style="margin:22px 0 6px"><button id="dl">Descargar foto</button> <button class="sec" id="other">Otra foto</button></p>
+      <p class="name" id="fname"></p>
+    </div>
+  </div>
+
+  <h2 style="font:600 18px Georgia,serif;color:var(--navy);margin-top:32px">Después</h2>
+  <ol>
+    <li>Mueve el archivo descargado (está en Descargas) a <b>assets/img/equipo/</b> de la carpeta de la web. Si ya había una foto de esa persona, sustitúyela.</li>
+    <li>Regenera la web: <code>python _build/build.py</code> desde la carpeta de la web.</li>
+  </ol>
+</main>
+<script>
+/*MIEMBROS*/var MIEMBROS=[["Guadalupe Dávila Arias", "guadalupe-davila-arias"], ["Marcelo L. Berthier Torres", "marcelo-l-berthier-torres"], ["Diana López Barroso", "diana-lopez-barroso"], ["María José Torres Prioris", "maria-jose-torres-prioris"], ["Ignacio Moreno-Torres Sánchez", "ignacio-moreno-torres-sanchez"], ["Irene de Torres García", "irene-de-torres-garcia"], ["José Paredes Pacheco", "jose-paredes-pacheco"], ["Francisco López González", "francisco-lopez-gonzalez"], ["Ismael Gutiérrez Cordero", "ismael-gutierrez-cordero"], ["África Yolanda Gómez Pérez", "africa-yolanda-gomez-perez"], ["Ariane Hohl", "ariane-hohl"], ["Florencia Hoet", "florencia-hoet"], ["Ana Melgar", "ana-melgar"], ["Mª Pilar Moyano Muñoz", "m-pilar-moyano-munoz"], ["Jorge Romero Castillo", "jorge-romero-castillo"], ["Lilian Toledo Rodríguez", "lilian-toledo-rodriguez"], ["Sergio Vertedor Morales", "sergio-vertedor-morales"], ["Francisco Alfaro Rubio", "francisco-alfaro-rubio"]];/*FIN*/
+var who=document.getElementById('who'),drop=document.getElementById('drop'),file=document.getElementById('file'),
+    work=document.getElementById('work'),stage=document.getElementById('stage'),cv=document.getElementById('cv'),
+    ctx=cv.getContext('2d'),zoom=document.getElementById('zoom'),pv=document.getElementById('pv'),mv=document.getElementById('mv'),
+    fname=document.getElementById('fname');
+MIEMBROS.forEach(function(m){var o=document.createElement('option');o.value=m[1];o.textContent=m[0];who.appendChild(o)});
+function nombre(){return who.value+'.jpg'}
+who.addEventListener('change',function(){fname.textContent='Se guardará como: '+nombre()});
+
+var img=null,S=800,base=1,z=1,cx=0,cy=0;  // cx,cy: punto de la foto que queda en el centro
+function load(f){
+  if(!f||!/^image\//.test(f.type)){alert('Ese archivo no es una imagen. Si es una foto .heic del iPhone, ábrela en Vista Previa y expórtala como JPEG.');return}
+  var u=URL.createObjectURL(f),im=new Image();
+  im.onload=function(){img=im;base=S/Math.min(im.width,im.height);z=1;zoom.value=1;cx=im.width/2;cy=Math.min(im.height/2,im.height*0.4);
+    clamp();drop.style.display='none';work.style.display='flex';fname.textContent='Se guardará como: '+nombre();draw()};
+  im.onerror=function(){alert('No se puede abrir esa imagen en el navegador. Prueba a exportarla como JPEG.')};
+  im.src=u;
+}
+function clamp(){var half=S/(2*base*z);cx=Math.min(Math.max(cx,half),img.width-half);cy=Math.min(Math.max(cy,half),img.height-half)}
+function paint(c,size){var k=c.getContext("2d"),half=S/(2*base*z);
+  k.imageSmoothingQuality='high';k.fillStyle='#fff';k.fillRect(0,0,size,size);
+  k.drawImage(img,cx-half,cy-half,2*half,2*half,0,0,size,size)}
+function draw(){paint(cv,S);paint(pv,320);paint(mv,128)}
+
+drop.addEventListener('click',function(){file.click()});
+file.addEventListener('change',function(){load(file.files[0])});
+['dragenter','dragover'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.add('over')})});
+['dragleave','drop'].forEach(function(e){drop.addEventListener(e,function(ev){ev.preventDefault();drop.classList.remove('over')})});
+drop.addEventListener('drop',function(ev){load(ev.dataTransfer.files[0])});
+
+zoom.addEventListener('input',function(){z=+zoom.value;clamp();draw()});
+stage.addEventListener('wheel',function(ev){ev.preventDefault();z=Math.min(6,Math.max(1,z*(ev.deltaY<0?1.06:1/1.06)));zoom.value=z;clamp();draw()},{passive:false});
+var drag=null;
+stage.addEventListener('pointerdown',function(ev){drag={x:ev.clientX,y:ev.clientY,cx:cx,cy:cy};stage.setPointerCapture(ev.pointerId)});
+stage.addEventListener('pointermove',function(ev){if(!drag)return;var r=S/stage.clientWidth/(base*z);
+  cx=drag.cx-(ev.clientX-drag.x)*r;cy=drag.cy-(ev.clientY-drag.y)*r;clamp();draw()});
+stage.addEventListener('pointerup',function(){drag=null});
+
+document.getElementById('dl').addEventListener('click',function(){
+  var out=document.createElement('canvas');out.width=out.height=400;paint(out,400);
+  out.toBlob(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=nombre();document.body.appendChild(a);a.click();a.remove()},'image/jpeg',0.85);
+});
+document.getElementById('other').addEventListener('click',function(){work.style.display='none';drop.style.display='block';file.value=''});
+fname.textContent='Se guardará como: '+(MIEMBROS.length?nombre():'');
+</script>
+</body>
+</html>
