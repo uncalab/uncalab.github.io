@@ -131,9 +131,9 @@ THESES = [
 # Tesis en curso: título provisional y fecha prevista de defensa pendientes (None = por confirmar).
 # (doctorando/a, título provisional, defensa prevista)
 THESES_ONGOING = [  # ('Nombre', 'título provisional' o None, 'fecha prevista' o None)
-    ('África Yolanda Gómez Pérez', 'Pharmacotherapy for attention in chronic Post-stroke aphasia: the role of the cholinergic system and neurorehabilitation', '2027'),
-    ('Ariane Awana', None, None),
-    ('Florencia Hoet', None, None),
+    ('África Yolanda Gómez Pérez', 'Pharmacotherapy for attention in chronic post-stroke aphasia: the role of the cholinergic system and neurorehabilitation', '2027'),
+    ('Ariane Awana', 'Dorsal and ventral language pathways in verbal repetition and comprehension: from the healthy brain to post-stroke aphasia', '2027'),
+    ('Florencia Hoet', 'Echolalia and repetitive verbal behaviours in post-stroke aphasia: prevalence, neurocognitive bases and response to intervention', '2030'),
     ('Ana Melgar', None, None),
     ('Mª Pilar Moyano Muñoz', None, None),
     ('Jorge Romero Castillo', None, None),
@@ -165,7 +165,9 @@ SENIORS = [('davila', 'Guadalupe Dávila'), ('berthier', 'Marcelo L. Berthier'),
 
 # (nombre, cargo ES, cargo EN, foto o None)
 ROLE_PENDING = object()  # cargo por confirmar
-BADGES = {'Guadalupe Dávila Arias': 'director', 'Marcelo L. Berthier Torres': 'founder'}  # etiqueta bajo el cargo
+# Etiqueta bajo el cargo: 'director' (Directora de la unidad), 'founder' (Miembro fundador),
+# 'seeking' (Disponible para contratación, en verde). Para quitarla, borra a la persona de esta lista.
+BADGES = {'Guadalupe Dávila Arias': 'director', 'Marcelo L. Berthier Torres': 'founder'}
 TEAM = [  # (bloque ES, bloque EN, [(nombre, cargo ES, cargo EN, foto o None)])
     ('Investigadores sénior', 'Senior researchers', [
         ('Guadalupe Dávila Arias', 'Profesora Titular de Universidad', 'Associate Professor', None),
@@ -207,6 +209,10 @@ PEOPLE_INFO = {
          ('ResearchGate', 'https://www.researchgate.net/profile/Maria-Jose-Torres-Prioris')]),
     'Marcelo L. Berthier Torres': (None, None, [('Portal UMA', PORTAL.format(1104291))]),
     'Guadalupe Dávila Arias': (None, None, [('Portal UMA', PORTAL.format(1241504))]),
+    'Jorge Romero Castillo': (
+        'Graduado en Psicología con mención en Psicología Clínica por la Universidad de Málaga. Es investigador y profesor del Departamento de Psicobiología y Metodología de las Ciencias del Comportamiento de la Facultad de Psicología y Logopedia de la Universidad de Málaga. Es miembro asociado de la Sociedad Española de Psicología Experimental (SEPEX) y editor junior de la revista Psicológica Journal. Forma parte de la Unidad de Neurociencia Cognitiva y Afasia (UNCA) de la Universidad de Málaga y del Instituto de Investigación Biomédica de Málaga (IBIMA).',
+        'BSc in Psychology (Clinical Psychology track) from the University of Málaga. He is a researcher and lecturer in the Department of Psychobiology and Methodology of Behavioural Sciences, Faculty of Psychology and Speech Therapy, University of Málaga. He is an associate member of the Spanish Society for Experimental Psychology (SEPEX) and a junior editor of Psicológica Journal. He belongs to the Cognitive Neuroscience and Aphasia Unit (UNCA) at the University of Málaga and to the Biomedical Research Institute of Málaga (IBIMA).',
+        []),
 }
 
 # Estudios abiertos a participantes (página Participa). Títulos sencillos, pensados para participantes.
@@ -372,7 +378,7 @@ T = {
     cta_b='Cómo participar',
     team_h='Equipo', team_p='Un grupo multidisciplinar de neurólogos, neuropsicólogos, psicólogos, lingüistas, logopedas y médicos rehabilitadores.',
     research_h='Investigación', research_p='Queremos entender los mecanismos de la recuperación para desarrollar tratamientos más eficaces y adaptados a cada persona, que combinan la terapia intensiva del lenguaje, los fármacos y la estimulación cerebral no invasiva.', theses_h='Tesis doctorales', supervisors='Dirección', soon='Próximamente', news_band='Novedades', news_all='Todas las noticias', theses_done='Tesis defendidas', theses_now='Tesis en curso', full_text='Texto completo', record='Ficha en el Portal', ph_title='Título provisional', ph_date='Defensa prevista',
-    colab_h='Colaboraciones', colab_feat='Colaboraciones destacadas', colab_map_h='Instituciones con las que hemos publicado', colab_map_p='{n} instituciones de {c} países, según el Portal de la Investigación de la Universidad de Málaga. Pulsa un punto para ver las instituciones de cada ciudad; entre paréntesis, el número de publicaciones conjuntas.', colab_hint='Pulsa un punto del mapa.', colab_list='Ver todas las instituciones por país', world='Mundo', europe='Europa', map_label='Mapa de instituciones colaboradoras', all_authors='Todos', filter_label='Filtrar por investigador', sub_lines='Líneas', sub_proj='Proyectos', sub_theses='Tesis', sub_colab='Colaboraciones', pubs_older='Publicaciones anteriores ({a}–{b})', founder='Miembro fundador', director='Directora de la unidad', pending_role='Cargo por confirmar', pending_funder='Financiador, referencia, fechas e IP por confirmar',
+    colab_h='Colaboraciones', colab_feat='Colaboraciones destacadas', colab_map_h='Instituciones con las que hemos publicado', colab_map_p='{n} instituciones de {c} países, según el Portal de la Investigación de la Universidad de Málaga. Pulsa un punto para ver las instituciones de cada ciudad; entre paréntesis, el número de publicaciones conjuntas.', colab_hint='Pulsa un punto del mapa.', colab_list='Ver todas las instituciones por país', world='Mundo', europe='Europa', map_label='Mapa de instituciones colaboradoras', all_authors='Todos', filter_label='Filtrar por investigador', sub_lines='Líneas', sub_proj='Proyectos', sub_theses='Tesis', sub_colab='Colaboraciones', pubs_older='Publicaciones anteriores ({a}–{b})', founder='Miembro fundador', seeking='Disponible para contratación', director='Directora de la unidad', pending_role='Cargo por confirmar', pending_funder='Financiador, referencia, fechas e IP por confirmar',
     projects_h='Proyectos financiados', ongoing='En curso', finished='Finalizado', pi='IP',
     pubs_h='Publicaciones', pubs_p='Artículos del grupo y de sus investigadores, ordenados por año.', pubs_search='Buscar por autor, título o revista', pubs_none='Ninguna publicación coincide con la búsqueda.',
     pubs_empty='El listado de publicaciones está en preparación.',
@@ -417,7 +423,7 @@ T = {
     cta_b='How to take part',
     team_h='Team', team_p='A multidisciplinary group of neurologists, neuropsychologists, psychologists, linguists, speech and language therapists and rehabilitation physicians.',
     research_h='Research', research_p='We want to understand the mechanisms of recovery in order to develop more effective treatments tailored to each person, combining intensive language therapy, drugs and non-invasive brain stimulation.', theses_h='Doctoral theses', supervisors='Supervisors', soon='Coming soon', news_band='Latest news', news_all='All news', theses_done='Completed theses', theses_now='Theses in progress', full_text='Full text', record='Record in the Research Portal', ph_title='Provisional title', ph_date='Expected defence',
-    colab_h='Collaborations', colab_feat='Key collaborators', colab_map_h='Institutions we have published with', colab_map_p='{n} institutions in {c} countries, according to the University of Málaga Research Portal. Select a dot to see the institutions in each city; joint publications in brackets.', colab_hint='Select a dot on the map.', colab_list='See all institutions by country', world='World', europe='Europe', map_label='Map of collaborating institutions', all_authors='All', filter_label='Filter by researcher', sub_lines='Lines', sub_proj='Projects', sub_theses='Theses', sub_colab='Collaborations', pubs_older='Earlier publications ({a}–{b})', founder='Founding member', director='Unit director', pending_role='Position to be confirmed', pending_funder='Funder, reference, dates and PI to be confirmed',
+    colab_h='Collaborations', colab_feat='Key collaborators', colab_map_h='Institutions we have published with', colab_map_p='{n} institutions in {c} countries, according to the University of Málaga Research Portal. Select a dot to see the institutions in each city; joint publications in brackets.', colab_hint='Select a dot on the map.', colab_list='See all institutions by country', world='World', europe='Europe', map_label='Map of collaborating institutions', all_authors='All', filter_label='Filter by researcher', sub_lines='Lines', sub_proj='Projects', sub_theses='Theses', sub_colab='Collaborations', pubs_older='Earlier publications ({a}–{b})', founder='Founding member', seeking='Open to new positions', director='Unit director', pending_role='Position to be confirmed', pending_funder='Funder, reference, dates and PI to be confirmed',
     projects_h='Funded projects', ongoing='Ongoing', finished='Completed', pi='PI',
     pubs_h='Publications', pubs_p='Articles by the group and its researchers, by year.', pubs_search='Search by author, title or journal', pubs_none='No publication matches your search.',
     pubs_empty='The list of publications is being prepared.',
@@ -543,7 +549,7 @@ def norm(x):
 
 # --- Imágenes: se detectan solas por nombre de archivo -------------------------------------------
 CUR = ' aria-current="page"'  # fuera de los f-strings: Python anterior a 3.12 no admite barras invertidas dentro de {}
-BADGE = '<em class="badge">{}</em>'
+BADGE = '<em class="badge {}">{}</em>'
 IMG_EXT = ('.webp', '.jpg', '.jpeg', '.png', '.svg')
 
 def slug(x):
@@ -919,7 +925,7 @@ if(!n)document.getElementById('nband').hidden=true;}})();</script>
             # Sin foto: avatar genérico provisional (assets/img/equipo/avatar.svg)
             # Foto: assets/img/equipo/<nombre-en-minusculas-con-guiones>.jpg (se detecta sola); si no, avatar genérico
             av = f'<div class="avatar">{pic("assets/img/equipo/" + (photo or slug(n)), pre) or pic("assets/img/equipo/avatar", pre)}</div>'
-            head = f'<div><b>{n}</b>{role(es, en)}{BADGE.format(t[BADGES[n]]) if n in BADGES else ""}</div>'
+            head = f'<div><b>{n}</b>{role(es, en)}{BADGE.format(BADGES[n], t[BADGES[n]]) if n in BADGES else ""}</div>'
             bes, ben, links = PEOPLE_INFO.get(n, (None, None, []))
             bio = (bes if lang == 'es' else ben)
             bio = f'<p>{bio}</p>' if bio else f'<p>{P.format(t["bio_pending"])}</p>'
