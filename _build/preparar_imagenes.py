@@ -8,6 +8,8 @@ Sin nada más, prepara todas las fotos del equipo y regenera la web:
 Otros usos (desde la carpeta de la web o cualquier subcarpeta):
   python3 _build/preparar_imagenes.py equipo  foto.jpg  "María José Torres Prioris"  [zoom]
   python3 _build/preparar_imagenes.py todas-equipo  [carpeta]  [zoom]
+  python3 _build/preparar_imagenes.py posters      (miniatura de cada PDF nuevo de assets/posters)
+  python3 _build/preparar_imagenes.py articulo-portada articulo.pdf DOI [página]   (1.ª página, para la ventana de la noticia)
   python3 _build/preparar_imagenes.py articulo figura.png  10.1016/j.cortex.2025.02.007
   python3 _build/preparar_imagenes.py portada foto.jpg  n-2026-presentaciones-en-la-snl-2026-ginebra
   python3 _build/preparar_imagenes.py fotos   n-2026-presentaciones-en-la-snl-2026-ginebra  f1.jpg f2.jpg …
@@ -77,10 +79,68 @@ def recortar(im, w, h, alto=0.5, zoom=1.0):
     return im.crop((x, y, x + w, y + h))
 
 
+def _registrar_webp(origen):
+    sys.path.insert(0, os.path.join(ROOT, '_build'))
+    import webp  # anota en _build/webp.json que el .webp corresponde a esta foto
+    webp.registrar(origen)
+
+
+def posters():
+    """Miniatura (1.ª página) de cada PDF de assets/posters que aún no la tenga, en assets/img/posters/."""
+    import shutil
+    import subprocess
+    import tempfile
+    origen = os.path.join(ROOT, 'assets', 'posters')
+    destino = os.path.join(ROOT, 'assets', 'img', 'posters')
+    os.makedirs(destino, exist_ok=True)
+    hechas = 0
+    for f in sorted(os.listdir(origen)):
+        if not f.lower().endswith('.pdf'):
+            continue
+        base = os.path.join(destino, os.path.splitext(f)[0])
+        if os.path.exists(base + '.jpg'):
+            continue
+        with tempfile.TemporaryDirectory() as tmp:
+            png = os.path.join(tmp, 'p.png')
+            if shutil.which('sips'):  # Mac
+                subprocess.run(['sips', '-s', 'format', 'png', os.path.join(origen, f), '--out', png], capture_output=True)
+            elif shutil.which('pdftoppm'):
+                subprocess.run(['pdftoppm', '-r', '40', '-f', '1', '-l', '1', '-singlefile', '-png', os.path.join(origen, f), png[:-4]])
+            if not os.path.exists(png):
+                print(f'  ✗ {f}: no he podido convertir el PDF (en Mac se usa sips; en otros sistemas, pdftoppm)')
+                continue
+            im = abrir(png)
+        im.thumbnail((360, 360), Image.LANCZOS)
+        guardar(im, base)
+        hechas += 1
+    print(f'{hechas} miniatura(s) de póster nueva(s).')
+
+
+def portada_articulo(pdf, doi, pagina=1):
+    """Primera página (o la indicada) del PDF de un artículo -> assets/img/pubs/portadas/<DOI con / cambiada por _>.jpg"""
+    import shutil
+    import subprocess
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmp:
+        png = os.path.join(tmp, 'p.png')
+        if shutil.which('pdftoppm'):
+            subprocess.run(['pdftoppm', '-r', '60', '-f', str(pagina), '-l', str(pagina), '-singlefile', '-png', pdf, png[:-4]])
+        elif shutil.which('sips') and pagina == 1:  # Mac: sips solo convierte la primera página
+            subprocess.run(['sips', '-s', 'format', 'png', pdf, '--out', png], capture_output=True)
+        elif shutil.which('sips'):
+            sys.exit('En Mac solo puedo sacar la página 1. Exporta tú esa página como imagen (Vista Previa) y usa: articulo-portada imagen.png DOI')
+        if not os.path.exists(png):
+            sys.exit('No he podido convertir el PDF.')
+        im = abrir(png)
+    im.thumbnail((360, 360), Image.LANCZOS)
+    guardar(im, os.path.join(ROOT, 'assets/img/pubs/portadas', doi.replace('/', '_')))
+
+
 def guardar(im, base):
     os.makedirs(os.path.dirname(base), exist_ok=True)
     im.save(base + '.jpg', quality=82, optimize=True, progressive=True)
     im.save(base + '.webp', quality=80, method=6)
+    _registrar_webp(base + '.jpg')
     print('  →', os.path.relpath(base, ROOT) + '.jpg (+ .webp)')
 
 
@@ -121,6 +181,19 @@ def main(a):
         a = ['todas-equipo']
     if a[0] in ('-h', '--help', 'ayuda'):
         sys.exit(__doc__)
+    if a[0] == 'articulo-portada' and len(a) >= 3:
+        if open(a[1], 'rb').read(5) == b'%PDF-':
+            portada_articulo(a[1], a[2], int(a[3]) if len(a) > 3 else 1)
+        else:  # ya es una imagen de la primera página
+            im = abrir(a[1])
+            im.thumbnail((360, 360), Image.LANCZOS)
+            guardar(im, os.path.join(ROOT, 'assets/img/pubs/portadas', a[2].replace('/', '_')))
+        regenerar()
+        return
+    if a[0] == 'posters':
+        posters()
+        regenerar()
+        return
     if a[0] == 'todas-equipo':
         carpeta = a[1] if len(a) > 1 and not a[1].replace('.', '').replace(',', '').isdigit() else os.path.join(ROOT, 'assets/img/equipo')
         z = [x for x in a[1:] if x.replace('.', '').replace(',', '').isdigit()]

@@ -131,8 +131,8 @@ THESES = [
 # Tesis en curso: título provisional y fecha prevista de defensa pendientes (None = por confirmar).
 # (doctorando/a, título provisional, defensa prevista)
 THESES_ONGOING = [  # ('Nombre', 'título provisional' o None, 'fecha prevista' o None)
-    ('África Yolanda Gómez Pérez', None, None),
-    ('Ariane Hohl', None, None),
+    ('África Yolanda Gómez Pérez', 'Pharmacotherapy for attention in chronic Post-stroke aphasia: the role of the cholinergic system and neurorehabilitation', '2027'),
+    ('Ariane Awana', None, None),
     ('Florencia Hoet', None, None),
     ('Ana Melgar', None, None),
     ('Mª Pilar Moyano Muñoz', None, None),
@@ -182,7 +182,7 @@ TEAM = [  # (bloque ES, bloque EN, [(nombre, cargo ES, cargo EN, foto o None)])
     ]),
     ('Investigadores predoctorales', 'PhD researchers', [
         ('África Yolanda Gómez Pérez', 'Contratada predoctoral', 'PhD researcher', None),
-        ('Ariane Hohl', 'Contratada predoctoral', 'PhD researcher', None),
+        ('Ariane Awana', 'Contratada predoctoral', 'PhD researcher', None),
         ('Florencia Hoet', 'Investigadora predoctoral', 'PhD researcher', None),
         ('Ana Melgar', 'Contratada predoctoral', 'PhD researcher', None),
         ('Mª Pilar Moyano Muñoz', 'Estudiante predoctoral', 'PhD student', None),
@@ -281,14 +281,22 @@ NEWS_POSTS = {}
 # (assets/img/noticias/ilus-{tipo}), generada a partir del logo.
 NEWS_MEDIA = {
     'Déficits de atención visual en la afasia postictus': {'cover': 'noticias/atencion-visual'},
-    # EJEMPLO provisional (Susan lo pidió para ver cómo queda): sustituir por fotos reales de la AoA
-    'Presentaciones en la Academy of Aphasia 2026 (Lieja)': {'cover': 'noticias/ejemplo-aoa-portada',
-        'photos': ['noticias/ejemplo-aoa-1.jpg', 'noticias/ejemplo-aoa-2.jpg', 'noticias/ejemplo-aoa-3.jpg']},
-    'Presentación en el II Joint Meeting SEPEX–BAPS 2026 (Valencia)': {'cover': 'noticias/sepex2026'},
-    'Presentaciones en la SNL 2026 (Ginebra)': {'cover': 'noticias/snl2026'},
     'Charla en el congreso de la SANP 2026 (Málaga)': {'cover': 'noticias/sanp2026'},
     'Metaanálisis de los patrones cerebrales de la repetición verbal': {'cover': 'noticias/metaanalisis'},
 }
+# Eventos pasados (Noticias: botón «Eventos» del filtro y al final de «Todas»).
+# Cada uno: ('nombre-de-la-foto', 'título ES', 'título EN', fecha 'AAAA-MM-DD', 'AAAA-MM' o 'AAAA', o '' si no se sabe).
+# Se ordenan solos por fecha, del más reciente al más antiguo; los que no tienen fecha van al final.
+# La foto va en assets/img/eventos/<nombre-de-la-foto>.jpg (o .jpeg/.png). Sin foto, sale un recuadro «Foto pendiente».
+# Para quitar uno, borra su línea.
+EVENTS = [
+    ('jornadas-de-lenguaje', 'Jornadas de Lenguaje', 'Language Conference', ''),
+    ('dia-de-la-mujer-y-la-ciencia', 'La UNCA en el Día de la Mujer y la Niña en la Ciencia', 'UNCA at the International Day of Women and Girls in Science', ''),
+    ('parque-de-las-ciencias-granada', 'La UNCA en el Parque de las Ciencias de Granada', 'UNCA at the Parque de las Ciencias, Granada', ''),
+    ('detras-de-camaras', 'Detrás de cámaras del programa … (pendiente)', 'Behind the scenes of … (pending)', ''),
+    ('pint-of-science', 'La UNCA en Pint of Science', 'UNCA at Pint of Science', ''),
+]
+
 # Póster o resumen en PDF de cada trabajo de congreso, por título (copiados de la web de MJTP).
 CONGRESS_PDF = {
     'Echolalia in post-stroke aphasia: prevalence and linguistic correlates': 'AoA2026_ecolalia.pdf',
@@ -369,7 +377,7 @@ T = {
     pubs_h='Publicaciones', pubs_p='Artículos del grupo y de sus investigadores, ordenados por año.', pubs_search='Buscar por autor, título o revista', pubs_none='Ninguna publicación coincide con la búsqueda.',
     pubs_empty='El listado de publicaciones está en preparación.',
     news_h='Noticias', news_p='Congresos, publicaciones, tesis y proyectos del grupo.',
-    news_empty='Todavía no hay noticias publicadas.', legend='Tipos de noticia', all_news='Todas', filter_empty='Por ahora no hay noticias de este tipo.', photos='Fotos', oa_pdf='PDF (RIUMA)',
+    news_empty='Todavía no hay noticias publicadas.', legend='Tipos de noticia', all_news='Todas', ev_h='Eventos', ev_pending='Foto pendiente', filter_empty='Por ahora no hay noticias de este tipo.', photos='Fotos', oa_pdf='PDF (RIUMA)',
     join_h='Participa en nuestra investigación',
     join_p='Necesitamos personas con afasia y también personas sin daño cerebral. Estos son los estudios en los que se puede participar ahora.',
     study='Estudio', who='Quién puede participar', poster_alt='Cartel del estudio', poster_see='Ver el cartel', q_pending='Enlace al cuestionario por añadir', crit_pending='Requisitos para participar por confirmar',
@@ -414,7 +422,7 @@ T = {
     pubs_h='Publications', pubs_p='Articles by the group and its researchers, by year.', pubs_search='Search by author, title or journal', pubs_none='No publication matches your search.',
     pubs_empty='The list of publications is being prepared.',
     news_h='News', news_p='Conferences, publications, theses and projects from the group.',
-    news_empty='No news has been published yet.', legend='News types', all_news='All', filter_empty='No news of this type yet.', photos='Photos', oa_pdf='PDF (RIUMA)',
+    news_empty='No news has been published yet.', legend='News types', all_news='All', ev_h='Events', ev_pending='Photo pending', filter_empty='No news of this type yet.', photos='Photos', oa_pdf='PDF (RIUMA)',
     join_h='Take part in our research',
     join_p='We need people with aphasia and also people without brain damage. These are the studies you can take part in now.',
     study='Study', who='Who can take part', poster_alt='Study poster (in Spanish)', poster_see='See the poster', q_pending='Questionnaire link to be added', crit_pending='Eligibility criteria to be confirmed',
@@ -541,6 +549,17 @@ IMG_EXT = ('.webp', '.jpg', '.jpeg', '.png', '.svg')
 def slug(x):
     return re.sub(r'[^a-z0-9]+', '-', norm(re.sub('<[^>]+>', '', x))).strip('-')
 
+# .webp válidos: foto de origen -> huella de su contenido (lo escribe _build/webp.py)
+try:
+    WEBP_OK = json.load(open(os.path.join(ROOT, '_build', 'webp.json'), encoding='utf-8'))
+except (FileNotFoundError, ValueError):
+    WEBP_OK = {}
+
+def huella(path):
+    import hashlib
+    with open(path, 'rb') as f:
+        return hashlib.sha1(f.read()).hexdigest()[:16]
+
 def pic(rel, pre, attrs='alt=""'):
     """<picture> para assets/{rel}.{webp|jpg|jpeg|png|svg} según los ficheros que existan; None si no hay ninguno."""
     d, base = os.path.split(rel)
@@ -552,9 +571,8 @@ def pic(rel, pre, attrs='alt=""'):
     if not have:
         return None
     fb = next((e for e in have if e != '.webp'), '.webp')
-    if '.webp' in have and fb != '.webp' and \
-            os.path.getmtime(os.path.join(ROOT, d, have['.webp'])) < os.path.getmtime(os.path.join(ROOT, d, have[fb])):
-        del have['.webp']  # .webp más antiguo que la foto: es de una versión anterior, se ignora
+    if '.webp' in have and fb != '.webp' and WEBP_OK.get(f'{d}/{have[fb]}') != huella(os.path.join(ROOT, d, have[fb])):
+        del have['.webp']  # el .webp no sale de esta versión de la foto (ver _build/webp.py): se ignora
     src = f'<source srcset="{pre}{d}/{have[".webp"]}" type="image/webp">' if '.webp' in have and fb != '.webp' else ''
     return f'<picture>{src}<img src="{pre}{d}/{have[fb]}" {attrs}></picture>'
 
@@ -712,6 +730,43 @@ def chapters_html(t):
     return '<ol class="pubs">' + ''.join(
         f'<li><p class="pt">{ti}</p><p class="pa">{au}</p><p class="pj">{y} · {bk}</p></li>' for y, au, ti, bk in CHAPTERS) + '</ol>'
 
+# Foto de grupo de Inicio (debajo de Novedades): assets/img/equipo/equipo-neurociencia-cognitiva.jpg; si no existe, no sale nada
+GROUP_PHOTO = 'assets/img/equipo/equipo-neurociencia-cognitiva'
+
+def group_photo(lang):
+    pre = '' if lang == 'es' else '../'
+    alt = 'El equipo de la UNCA' if lang == 'es' else 'The UNCA team'
+    img = pic(GROUP_PHOTO, pre, f'alt="{alt}" loading="lazy"')
+    return (f'<section class="group-photo"><div class="wrap"><a href="{FILE["team"][lang]}">{img}</a></div></section>') if img else ''
+
+def edate(d, lang):
+    if len(d) == 7:  # AAAA-MM
+        y, m = d.split('-')
+        return f'{MONTHS[lang][int(m) - 1]} {y}'
+    return fdate(d, lang)
+
+def events_html(lang):
+    t = T[lang]
+    pre = '' if lang == 'es' else '../'
+    cards = ''
+    # Orden: de más reciente a más antiguo según la fecha ('AAAA-MM-DD', 'AAAA-MM' o 'AAAA'); los que no tienen fecha, al final
+    for name, tes, ten, d in sorted(EVENTS, key=lambda e: e[3] or '0', reverse=True):
+        title = tes if lang == 'es' else ten
+        img = pic('assets/img/eventos/' + name, pre, f'alt="{html.escape(re.sub("<[^>]+>", "", title), quote=True)}" loading="lazy"')
+        if img:
+            src = re.search(r'<img src="([^"]+)"', img).group(1)
+            fig = f'<a class="ev-img" href="{src}" target="_blank" rel="noopener">{img}</a>'
+        else:
+            fig = f'<span class="ev-img ph">{P.format(t["ev_pending"])}</span>'
+        cards += f'<figure class="ev">{fig}<figcaption>{title}{f"<time>{edate(d, lang)}</time>" if d else ""}</figcaption></figure>'
+    return f'<section class="block events"><div class="wrap"><div class="block-head"><h2>{t["ev_h"]}</h2></div><div class="ev-grid">{cards}</div></div></section>' if EVENTS else ''
+
+def poster_thumb(ti, pre):
+    """Miniatura del póster: assets/img/posters/<nombre del PDF sin .pdf>.jpg (se detecta sola), enlazada al PDF."""
+    f = CONGRESS_PDF.get(ti)
+    img = f and pic('assets/img/posters/' + os.path.splitext(f)[0], pre, 'alt="" loading="lazy"')
+    return f'<a class="poster-thumb" href="{pre}assets/posters/{f}" tabindex="-1" aria-hidden="true">{img}</a>' if img else ''
+
 def pdf_link(ti, lang):
     f = CONGRESS_PDF.get(ti)
     return f' <a class="doi" href="{"" if lang == "es" else "../"}assets/posters/{f}">PDF</a>' if f else ''
@@ -721,7 +776,9 @@ def congresses_html(lang):
     years = sorted({c[0] for c in CONGRESSES}, reverse=True)
     return f'<p class="note">{P.format(t["partial"])}</p>' + ''.join(
         f'<section class="pub-year"><h2>{y}</h2><ol class="pubs">' + ''.join(
-            f'<li><p class="ctag">{tes if lang == "es" else ten}</p><p class="pt">{ti}</p><p class="pa">{au}</p><p class="pj">{ve}{pdf_link(ti, lang)}</p></li>'
+            (lambda th, body: f'<li class="w-poster">{th}<div>{body}</div></li>' if th else f'<li>{body}</li>')(
+                poster_thumb(ti, '' if lang == 'es' else '../'),
+                f'<p class="ctag">{tes if lang == "es" else ten}</p><p class="pt">{ti}</p><p class="pa">{au}</p><p class="pj">{ve}{pdf_link(ti, lang)}</p>')
             for yy, tes, ten, ti, au, ve in CONGRESSES if yy == y) + '</ol></section>' for y in years)
 
 def outreach_html(lang):
@@ -760,6 +817,21 @@ def news_items(lang, limit=None, only_recent=False, link=False):
         teaser = text or t['n_works'][len(works) > 1].format(n=len(works))
         post = NEWS_POSTS.get(tes)
         detail = f'<p>{text}</p>' if text else ''
+        doi = url.split('doi.org/', 1)[1] if url and 'doi.org/' in url else None
+        if k == 'publicacion' and doi:
+            # Primera página del artículo (assets/img/pubs/portadas/<DOI con / cambiada por _>.jpg); si no, la miniatura de la lista
+            portada = pic('assets/img/pubs/portadas/' + doi.replace('/', '_'), pre, 'alt="" loading="lazy"')
+            img = pic('assets/img/pubs/' + PUB_THUMB.get(doi, doi.replace('/', '_')), pre, 'alt="" loading="lazy"')
+            ref = next((p for p in PUBS if p[5] == doi), None)
+            jo = ref[3] if ref else ''
+            if ref:  # referencia completa: autores (año). Título. Revista, vol:págs.
+                y_, au_, ti_, jo_, vp_, _d = ref
+                detail += f'<p class="dlg-ref">{au_} ({y_}). {ti_}. <i>{jo_}</i>{", " + vp_ if vp_ else ""}. <a href="{url}">doi:{doi}</a></p>'
+            th = f'<a class="poster-thumb page" href="{url}" tabindex="-1" aria-hidden="true">{portada}</a>' if portada else \
+                f'<a class="pub-thumb" href="{url}" tabindex="-1" aria-hidden="true">{img}</a>' if img else \
+                f'<span class="pub-thumb ph" aria-hidden="true"><span>{jo}</span></span>' if jo else ''
+            if th:
+                detail = f'<div class="dlg-pub">{th}<div>{detail}</div></div>'
         if post:
             detail += ''.join(f'<p>{x}</p>' for x in (post[0] if lang == 'es' else post[1]).split('\n\n'))
         elif sub == 'resena':
@@ -772,7 +844,9 @@ def news_items(lang, limit=None, only_recent=False, link=False):
                 f = CONGRESS_PDF.get(ti)
                 return f' <a class="doi" href="{pre}assets/posters/{f}">PDF</a>' if f else ''
             detail += '<ul class="dlg-works">' + ''.join(
-                f'<li><span class="ctag">{tes_ if lang == "es" else ten_}</span><b>{ti}</b><span>{au}{pdf(ti)}</span></li>' for _, tes_, ten_, ti, au, _v in works) + '</ul>'
+                (lambda th, body: f'<li class="w-poster">{th}<div>{body}</div></li>' if th else f'<li>{body}</li>')(
+                    poster_thumb(ti, pre), f'<span class="ctag">{tes_ if lang == "es" else ten_}</span><b>{ti}</b><span>{au}</span><span class="dlg-ve">{_v} · {_y}{pdf(ti)}</span>')
+                for _y, tes_, ten_, ti, au, _v in works) + '</ul>'
         if photos:
             detail += f'<h3 class="dlg-sub">{t["photos"]}</h3><div class="dlg-photos">' + ''.join(
                 f'<a href="{pre}assets/img/{ph}" target="_blank" rel="noopener"><img src="{pre}assets/img/{ph}" alt="" loading="lazy"></a>' for ph in photos) + '</div>'
@@ -813,8 +887,8 @@ def build(lang):
   <div class="hero-text">
     <p class="kicker">{t['kicker']}</p>
     <h1>{t['h1']}</h1>
-    <p class="lead">{t['lead']}</p>
-    <div class="btns"><a class="btn solid" href="{FILE['research'][lang]}">{t['b1']} {icon('i-flecha')}</a><a class="btn" href="{FILE['join'][lang]}">{t['b2']}</a></div>
+    <p class="lead">{t['lead'].replace(t['unit'] + ' (UNCA)', '<strong class="unit-name">' + t['unit'] + ' (UNCA)</strong>')}</p>
+    <div class="btns"><a class="btn solid" href="{FILE['research'][lang]}">{t['b1']} {icon('i-flecha')}</a><a class="btn accent" href="{FILE['join'][lang]}">{t['b2']}</a></div>
   </div>
 </div>
 </section>
@@ -826,6 +900,7 @@ def build(lang):
 (function(){{var c=new Date();c.setFullYear(c.getFullYear()-1);var n=0;
 document.querySelectorAll('#nrow .news-item').forEach(function(a){{var old=new Date(a.dataset.date+'T00:00:00')<c;a.hidden=old||n>=6;if(!a.hidden)n++;}});
 if(!n)document.getElementById('nband').hidden=true;}})();</script>
+{group_photo(lang)}
 <section class="block"><div class="wrap">
   <div class="block-head"><h2>{t['action_h']}</h2></div>
   <div class="action">{''.join(f'<a href="{FILE[k][lang]}">{icon(ic)}<b>{h}</b><span>{d}</span></a>' for k, ic, h, d in t['action'])}</div>
@@ -883,13 +958,15 @@ document.querySelectorAll('.seg button').forEach(function(b){b.addEventListener(
     nfilter = (f'<nav class="tabs nfilter" aria-label="{t["legend"]}"><div class="wrap">'
                f'<button type="button" class="tab-todas" data-k="" aria-pressed="true">{t["all_news"]}</button>' + ''.join(
                    f'<button type="button" class="tab-n-{k}" data-k="{k}" aria-pressed="false">{es if lang == "es" else en}</button>'
-                   for k, es, en in NEWS_TYPES) + '</div></nav>')
+                   for k, es, en in NEWS_TYPES) +
+               (f'<button type="button" class="tab-n-evento" data-k="evento" aria-pressed="false">{t["ev_h"]}</button>' if EVENTS else '') + '</div></nav>')
     nfilter_js = """<script>(function(){var bs=document.querySelectorAll('.nfilter button');bs.forEach(function(b){b.addEventListener('click',function(){
 var k=b.dataset.k;bs.forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-var n=0;document.querySelectorAll('.news-list .news-item').forEach(function(a){a.hidden=!!k&&!a.classList.contains(k);if(!a.hidden)n++});
-var e=document.querySelector('.nfilter-empty');if(e)e.hidden=n>0;});});})();</script>"""
+var ev=k==='evento',n=0;document.querySelectorAll('.news-list .news-item').forEach(function(a){a.hidden=ev||(!!k&&!a.classList.contains(k));if(!a.hidden)n++});
+var e=document.querySelector('.nfilter-empty');if(e)e.hidden=ev||n>0;
+var es=document.querySelector('.events');if(es)es.hidden=!!k&&!ev;var nl=document.querySelector('.news-block');if(nl)nl.hidden=ev;});});})();</script>"""
     news_body = f'<p class="empty">{t["news_empty"]}</p>' if not NEWS else f'<div class="news-list">{news_items(lang)}</div><p class="empty nfilter-empty" hidden>{t["filter_empty"]}</p>'
-    out['news'] = (t['news_h'], page_head(t['news_h'], t['news_p'], 'news', pre) + nfilter + f'<section class="block"><div class="wrap">{news_body}</div></section>{nfilter_js}')
+    out['news'] = (t['news_h'], page_head(t['news_h'], t['news_p'], 'news', pre) + nfilter + f'<section class="block news-block"><div class="wrap">{news_body}</div></section>' + events_html(lang) + nfilter_js)
 
     crit = ''.join(f'<div><b>{a}</b>{b}</div>' for a, b in t['crit'])
     studies = ''
@@ -940,7 +1017,7 @@ if os.path.exists(_rc):
     open(_rc, 'w', encoding='utf-8').write(_h)
 
 # Aviso: fotos en assets/img/equipo que no corresponden a ningún miembro (nombre mal escrito)
-_names = {slug(m[0]) for _, _, ms in TEAM for m in ms} | {m[3] for _, _, ms in TEAM for m in ms if m[3]} | {'avatar'}
+_names = {slug(m[0]) for _, _, ms in TEAM for m in ms} | {m[3] for _, _, ms in TEAM for m in ms if m[3]} | {'avatar', os.path.basename(GROUP_PHOTO)}
 for f in sorted(os.listdir(os.path.join(ROOT, 'assets/img/equipo'))):
     b, e = os.path.splitext(f)
     if e.lower() in IMG_EXT and b.lower() not in _names:
