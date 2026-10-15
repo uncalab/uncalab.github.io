@@ -354,8 +354,9 @@ dialog#dlg::backdrop{background:rgba(14,27,42,.45)}
 .dlg-person b{display:block;font:600 22px/1.25 var(--serif);color:var(--navy)}
 .dlg-person span{display:block;font-size:14.5px;color:var(--slate)}
 .dlg-links{display:flex;flex-wrap:wrap;gap:8px}
-.dlg-links a{font:500 13.5px/1 var(--sans);padding:8px 11px;border:1px solid var(--line);border-radius:999px;text-decoration:none}
+.dlg-links a{display:inline-flex;align-items:center;gap:7px;font:500 13.5px/1 var(--sans);padding:8px 11px;border:1px solid var(--line);border-radius:999px;text-decoration:none}
 .dlg-links a:hover{border-color:var(--navy)}
+.dlg-links .ico{width:16px;height:16px;flex:none}
 /* Participa: un bloque por estudio */
 .studies{display:grid;gap:28px}
 .study{border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:3px;padding:28px 30px}
