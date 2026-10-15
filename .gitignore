@@ -1,0 +1,7 @@
+# Solo se sube a GitHub la web publicada. El panel, los datos y la guía se quedan en tu ordenador.
+_build/
+_ABRIR-PANEL.command
+_ABRIR-PANEL.bat
+COMO-ACTUALIZAR.md
+__pycache__/
+.DS_Store
