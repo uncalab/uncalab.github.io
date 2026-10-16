@@ -48,8 +48,8 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="../assets/img/marca.svg" alt="" width="68" height="49"><span><b>UNCA</b><small>Cognitive Neuroscience and Aphasia</small></span></a>
-    <nav class="nav" aria-label="Menu"><a href="index.html">Home</a><a href="team.html" aria-current="page">Team</a><a href="research.html">Research</a><!-- <a href="outreach.html">Outreach</a> --><a href="news.html">News</a><a href="participate.html">Participate</a><!-- <span class="soon" aria-disabled="true" title="Coming soon">Resources<small>Coming soon</small></span><span class="soon" aria-disabled="true" title="Coming soon">Patients and families<small>Coming soon</small></span> --><a href="contact.html">Contact</a><span class="lang" aria-label="Language"><a href="../equipo.html" lang="es" hreflang="es">ES</a><span lang="en">EN</span></span></nav>
+    <a class="brand" href="index.html"><picture><source srcset="../assets/img/logo-unca.webp" type="image/webp"><img src="../assets/img/logo-unca.png" alt="UNCA" width="617" height="240"></picture><small>Cognitive Neuroscience and Aphasia Unit</small></a>
+    <nav class="nav" aria-label="Menu"><a href="index.html">Home</a><a href="team.html" aria-current="page">Team</a><a href="research.html">Research</a><!-- <a href="outreach.html">Outreach</a> --><a href="news.html">News</a><a href="participate.html">Participate</a><!-- <span class="soon" aria-disabled="true" title="Coming soon">Resources<small>Coming soon</small></span><span class="soon" aria-disabled="true" title="Coming soon">Patients and families<small>Coming soon</small></span> --><a href="contact.html">Our unit</a><span class="lang" aria-label="Language"><a href="../equipo.html" lang="es" hreflang="es">ES</a><span lang="en">EN</span></span></nav>
   </div>
 </header>
 <main id="main">
@@ -60,12 +60,13 @@
 function open(el){var tp=el.querySelector('template');if(!tp)return;inn.innerHTML='';inn.appendChild(tp.content.cloneNode(true));d.showModal();}
 var h=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));if(h&&h.classList.contains('opens')){h.scrollIntoView({block:'center'});open(h);}
 document.querySelectorAll('.opens').forEach(function(el){el.addEventListener('click',function(e){if(e.target.closest('a'))return;open(el)});el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el)}});});
-d.querySelector('.dlg-x').addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()});})();</script>
+d.querySelector('.dlg-x').addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()});
+d.addEventListener('click',function(e){var b=e.target.closest('.copy');if(!b)return;var x=d.querySelector('.cite-txt');if(x&&navigator.clipboard)navigator.clipboard.writeText(x.innerText).then(function(){b.textContent=b.dataset.ok});});})();</script>
 <footer class="site-foot">
   <div class="wrap">
     <div><b>UNCA</b><p>Cognitive Neuroscience and Aphasia Unit</p><p>PAIDI CTS-994 · IBIMA C12</p></div>
-    <div><b>Where we are</b><p>Teatinos Campus</p><p>29071 Málaga</p></div>
-    <div><b>Contact</b><p><a href="contact.html">Write to us</a></p><p><a href="participate.html">How to take part</a></p></div>
+    <div><b>Where we are</b><p>Medical and Health Research Centre (CIMES)</p><p>C/ Marqués de Beccaria, 3</p><p>Teatinos-Universidad</p><p>29010 Málaga</p></div>
+    <div><b>Contact</b><p><a href="contact.html">Our unit</a></p><p><a href="participate.html">How to take part</a></p></div>
     <div class="logos">
       <a href="https://www.uma.es/" aria-label="Universidad de Málaga"><picture><source srcset="../assets/img/logo-uma.webp" type="image/webp"><img src="../assets/img/logo-uma.png" alt="Universidad de Málaga" width="333" height="128"></picture></a>
       <a href="https://www.uma.es/facultad-de-psicologia/" aria-label="Faculty of Psychology and Speech Therapy, University of Málaga"><picture><source srcset="../assets/img/logo-facultad.webp" type="image/webp"><img src="../assets/img/logo-facultad.png" alt="Faculty of Psychology and Speech Therapy, University of Málaga" width="462" height="128"></picture></a>

@@ -48,8 +48,8 @@
 <a class="skip" href="#main">Saltar al contenido</a>
 <header class="site-head">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/img/marca.svg" alt="" width="68" height="49"><span><b>UNCA</b><small>Neurociencia Cognitiva y Afasia</small></span></a>
-    <nav class="nav" aria-label="Menu"><a href="index.html">Inicio</a><a href="equipo.html">Equipo</a><a href="investigacion.html">Investigación</a><!-- <a href="divulgacion.html">Divulgación</a> --><a href="noticias.html">Noticias</a><a href="participa.html" aria-current="page">Participa</a><!-- <span class="soon" aria-disabled="true" title="Próximamente">Recursos<small>Próximamente</small></span><span class="soon" aria-disabled="true" title="Próximamente">Pacientes y familias<small>Próximamente</small></span> --><a href="contacto.html">Contacto</a><span class="lang" aria-label="Idioma"><span lang="es">ES</span><a href="en/participate.html" lang="en" hreflang="en">EN</a></span></nav>
+    <a class="brand" href="index.html"><picture><source srcset="assets/img/logo-unca.webp" type="image/webp"><img src="assets/img/logo-unca.png" alt="UNCA" width="617" height="240"></picture><small>Unidad de Neurociencia Cognitiva y Afasia</small></a>
+    <nav class="nav" aria-label="Menu"><a href="index.html">Inicio</a><a href="equipo.html">Equipo</a><a href="investigacion.html">Investigación</a><!-- <a href="divulgacion.html">Divulgación</a> --><a href="noticias.html">Noticias</a><a href="participa.html" aria-current="page">Participa</a><!-- <span class="soon" aria-disabled="true" title="Próximamente">Recursos<small>Próximamente</small></span><span class="soon" aria-disabled="true" title="Próximamente">Pacientes y familias<small>Próximamente</small></span> --><a href="contacto.html">La unidad</a><span class="lang" aria-label="Idioma"><span lang="es">ES</span><a href="en/participate.html" lang="en" hreflang="en">EN</a></span></nav>
   </div>
 </header>
 <main id="main">
@@ -61,12 +61,13 @@
 function open(el){var tp=el.querySelector('template');if(!tp)return;inn.innerHTML='';inn.appendChild(tp.content.cloneNode(true));d.showModal();}
 var h=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));if(h&&h.classList.contains('opens')){h.scrollIntoView({block:'center'});open(h);}
 document.querySelectorAll('.opens').forEach(function(el){el.addEventListener('click',function(e){if(e.target.closest('a'))return;open(el)});el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el)}});});
-d.querySelector('.dlg-x').addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()});})();</script>
+d.querySelector('.dlg-x').addEventListener('click',function(){d.close()});d.addEventListener('click',function(e){if(e.target===d)d.close()});
+d.addEventListener('click',function(e){var b=e.target.closest('.copy');if(!b)return;var x=d.querySelector('.cite-txt');if(x&&navigator.clipboard)navigator.clipboard.writeText(x.innerText).then(function(){b.textContent=b.dataset.ok});});})();</script>
 <footer class="site-foot">
   <div class="wrap">
     <div><b>UNCA</b><p>Unidad de Neurociencia Cognitiva y Afasia</p><p>PAIDI CTS-994 · IBIMA C12</p></div>
-    <div><b>Dónde estamos</b><p>Campus de Teatinos s/n</p><p>29071 Málaga</p></div>
-    <div><b>Contacto</b><p><a href="contacto.html">Escríbenos</a></p><p><a href="participa.html">Cómo participar</a></p></div>
+    <div><b>Dónde estamos</b><p>Centro de Investigaciones Médico-Sanitarias (CIMES)</p><p>C/ Marqués de Beccaria, 3</p><p>Teatinos-Universidad</p><p>29010 Málaga</p></div>
+    <div><b>Contacto</b><p><a href="contacto.html">La unidad</a></p><p><a href="participa.html">Cómo participar</a></p></div>
     <div class="logos">
       <a href="https://www.uma.es/" aria-label="Universidad de Málaga"><picture><source srcset="assets/img/logo-uma.webp" type="image/webp"><img src="assets/img/logo-uma.png" alt="Universidad de Málaga" width="333" height="128"></picture></a>
       <a href="https://www.uma.es/facultad-de-psicologia/" aria-label="Facultad de Psicología y Logopedia, Universidad de Málaga"><picture><source srcset="assets/img/logo-facultad.webp" type="image/webp"><img src="assets/img/logo-facultad.png" alt="Facultad de Psicología y Logopedia, Universidad de Málaga" width="462" height="128"></picture></a>
