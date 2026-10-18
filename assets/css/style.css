@@ -587,3 +587,5 @@ body:not(.s-home) .site-head{border-bottom-color:color-mix(in srgb,var(--sec) 28
 .rv .txt p{font-size:17px;line-height:1.7;margin:0 0 16px}.rv .txt li{font-size:17px}
 .rv .back{font:500 14px/1 var(--sans);color:var(--navy);text-decoration:none}.rv .back:hover{text-decoration:underline}
 .rv-end{margin:36px 0 0;padding-top:18px;border-top:1px solid var(--line)}
+.doi.plain{cursor:pointer;background:var(--c-evento,#9A4E78);border-color:var(--c-evento,#9A4E78);color:#fff}
+.rv-full{margin:28px 0 0}
