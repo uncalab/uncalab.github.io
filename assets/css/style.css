@@ -589,3 +589,5 @@ body:not(.s-home) .site-head{border-bottom-color:color-mix(in srgb,var(--sec) 28
 .rv-end{margin:36px 0 0;padding-top:18px;border-top:1px solid var(--line)}
 .doi.plain{cursor:pointer;background:var(--c-evento,#9A4E78);border-color:var(--c-evento,#9A4E78);color:#fff}
 .rv-full{margin:28px 0 0}
+/* Personas por fila de cada bloque del equipo (Bloques del equipo, en el panel); en pantallas pequeñas manda lo de arriba */
+@media (min-width:901px){.team.cols-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:780px}.team.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}}
